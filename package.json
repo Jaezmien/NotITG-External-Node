@@ -1,17 +1,21 @@
 {
-  "name": "notitg-external",
-  "version": "1.0.0",
-  "license": "MIT",
-  "main": "build/notitg.js",
-  "types": "build/notitg.d.ts",
-  "author": "Jaezmien Naejara",
-  "scripts": {
-	  "tsc": "tsc"
-  },
-  "dependencies": {
-    "memoryjs": "^3.4.0"
-  },
-  "devDependencies": {
-    "@types/node": "^16.11.10"
-  }
+	"name": "notitg-external",
+	"version": "1.0.0",
+	"license": "MIT",
+	"main": "build/notitg.js",
+	"types": "build/notitg.d.ts",
+	"author": "Jaezmien Naejara",
+	"repository": "github:jaezmien/notitg-external-node",
+	"scripts": {
+		"tsc": "tsc"
+	},
+	"dependencies": {
+		"memoryjs": "^3.4.0"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.10"
+	},
+	"keywords": [
+		"notitg"
+	]
 }
