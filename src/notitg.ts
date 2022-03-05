@@ -120,7 +120,7 @@ export class NotITG {
 					for (const [VERSION] of Object.entries(NOTITG_FILENAMES)) {
 						const ADDRESSES = NOTITG_VERSION[VERSION]
 						if (
-							parseInt(memoryjs.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs.INT)) ===
+							parseInt(memoryjs.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs.STRING)) ===
 							ADDRESSES.BuildDate
 						) {
 							this.Connect(PROCESS, VERSION, PROCESS.szExeFile)
@@ -140,17 +140,20 @@ export class NotITG {
 
 		try {
 			const PROCESS = memoryjs.openProcess(id)
-			for (const [VERSION, FILENAME] of Object.entries(NOTITG_FILENAMES)) {
+			for (const [VERSION] of Object.entries(NOTITG_FILENAMES)) {
 				const ADDRESSES = NOTITG_VERSION[VERSION]
 				if (
-					parseInt(memoryjs.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs.INT)) ===
+					parseInt(memoryjs.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs.STRING)) ===
 					ADDRESSES.BuildDate
 				) {
-					this.Connect(PROCESS, VERSION, FILENAME)
+					this.Connect(PROCESS, VERSION, PROCESS.szExeFile)
 					return true
 				}
 			}
-		} catch (_) {}
+		} catch (_) {
+			//
+			console.log(_)
+		}
 
 		return false
 	}

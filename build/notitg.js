@@ -136,7 +136,7 @@ var NotITG = /** @class */ (function () {
                     for (var _e = 0, _f = Object.entries(NOTITG_FILENAMES); _e < _f.length; _e++) {
                         var VERSION = _f[_e][0];
                         var ADDRESSES = NOTITG_VERSION[VERSION];
-                        if (parseInt(memoryjs_1.default.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs_1.default.INT)) ===
+                        if (parseInt(memoryjs_1.default.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs_1.default.STRING)) ===
                             ADDRESSES.BuildDate) {
                             this.Connect(PROCESS, VERSION, PROCESS.szExeFile);
                             return true;
@@ -156,16 +156,19 @@ var NotITG = /** @class */ (function () {
         try {
             var PROCESS = memoryjs_1.default.openProcess(id);
             for (var _i = 0, _a = Object.entries(NOTITG_FILENAMES); _i < _a.length; _i++) {
-                var _b = _a[_i], VERSION = _b[0], FILENAME = _b[1];
+                var VERSION = _a[_i][0];
                 var ADDRESSES = NOTITG_VERSION[VERSION];
-                if (parseInt(memoryjs_1.default.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs_1.default.INT)) ===
+                if (parseInt(memoryjs_1.default.readMemory(PROCESS.handle, ADDRESSES.BuildAddress, memoryjs_1.default.STRING)) ===
                     ADDRESSES.BuildDate) {
-                    this.Connect(PROCESS, VERSION, FILENAME);
+                    this.Connect(PROCESS, VERSION, PROCESS.szExeFile);
                     return true;
                 }
             }
         }
-        catch (_) { }
+        catch (_) {
+            //
+            console.log(_);
+        }
         return false;
     };
     NotITG.prototype.Disconnect = function () {
