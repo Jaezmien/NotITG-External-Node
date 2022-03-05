@@ -152,7 +152,6 @@ export class NotITG {
 			}
 		} catch (_) {
 			//
-			console.log(_)
 		}
 
 		return false

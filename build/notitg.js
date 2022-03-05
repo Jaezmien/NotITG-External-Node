@@ -167,7 +167,6 @@ var NotITG = /** @class */ (function () {
         }
         catch (_) {
             //
-            console.log(_);
         }
         return false;
     };
